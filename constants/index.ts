@@ -56,7 +56,7 @@ export const FIELD_TYPES = {
 };
 
 export const sampleBooks = [
-  {
+  {isLoanedBook: true,
     id: 1,
     title: "The Midnight Library",
     author: "Matt Haig",
@@ -72,7 +72,7 @@ export const sampleBooks = [
     summary:
       "A dazzling novel about all the choices that go into a life well lived, The Midnight Library tells the story of Nora Seed as she finds herself between life and death. A dazzling novel about all the choices that go into a life well lived, The Midnight Library tells the story of Nora Seed as she finds herself between life and death.",
   },
-  {
+  {isLoanedBook: true,
     id: 2,
     title: "Atomic Habits",
     author: "James Clear",
@@ -88,7 +88,7 @@ export const sampleBooks = [
     summary:
       "A revolutionary guide to making good habits, breaking bad ones, and getting 1% better every day.",
   },
-  {
+  {isLoanedBook: true,
     id: 3,
     title: "You Don't Know JS: Scope & Closures",
     author: "Kyle Simpson",
@@ -138,7 +138,7 @@ export const sampleBooks = [
     summary:
       "Rules for focused success in a distracted world, teaching how to cultivate deep focus to achieve peak productivity.",
   },
-  {
+  {isLoanedBook: true,
     id: 6,
     title: "Clean Code",
     author: "Robert C. Martin",
@@ -172,7 +172,7 @@ export const sampleBooks = [
     summary:
       "A timeless guide for developers to hone their skills and improve their programming practices.",
   },
-  {
+  {isLoanedBook: true,
     id: 8,
     title: "The Psychology of Money",
     author: "Morgan Housel",

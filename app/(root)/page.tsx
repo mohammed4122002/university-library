@@ -8,12 +8,12 @@ export default function HomePage() {
       {/* Hero Section */}
       <BookOverview {...sampleBooks[0]} />
 
-      {/* Latest Books */}
-      {/* <BookList
+      
+       <BookList
         title="Latest Books"
         books={sampleBooks}
         containerClassName="mt-28"
-      /> */}
+      />
     </>
   );
 }

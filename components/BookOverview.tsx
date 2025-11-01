@@ -7,8 +7,8 @@ export default function BookOverview({
   author,
   genre,
   rating,
-  totalCopies,
-  availableCopies,
+  total_copies,
+  available_copies,
   description,
   color,
   cover,
@@ -19,7 +19,7 @@ export default function BookOverview({
   return (
     <section className="book-overview">
       {/* LEFT SIDE */}
-      <div className="flex flex-col gap-5 flex-1">
+      <div className="flex flex-col gap-5 ">
         <h1 className="text-5xl font-bold text-light-100 md:text-6xl">
           {title}
         </h1>
@@ -41,11 +41,11 @@ export default function BookOverview({
           <div className="book-copies space-y-1">
             <p>
               Total Books:{" "}
-              <span className="font-semibold text-light-200">{totalCopies}</span>
+              <span className="font-semibold text-light-200">{total_copies}</span>
             </p>
             <p>
               Available:{" "}
-              <span className="font-semibold text-light-200">{availableCopies}</span>
+              <span className="font-semibold text-light-200">{available_copies}</span>
             </p>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function BookOverview({
             height={20}
             className="mr-2"
           />
-          Borrow
+          Borrow Book Request
         </Button>
 
       </div>
