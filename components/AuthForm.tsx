@@ -18,6 +18,7 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import Link from "next/link";
+import ImageUpload from "./FileUpload";
 
 const authSchemas = {
   SIGN_IN: singInSchema,
@@ -177,9 +178,7 @@ const AuthForm = <T extends AuthType>({
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                      <div className="">
-                        <span className="text-light-300">UNI-</span>
-                      </div>
+                    <ImageUpload  onFileChange={field.onChange}/>
                     ) : (
                       <Input
                         type={fieldConfig.type ?? "text"}
