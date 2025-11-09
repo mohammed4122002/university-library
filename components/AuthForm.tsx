@@ -19,6 +19,8 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import Link from "next/link";
 import ImageUpload from "./FileUpload";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const authSchemas = {
   SIGN_IN: singInSchema,
@@ -134,6 +136,9 @@ const AuthForm = <T extends AuthType>({
   defaultValues,
   onSubmit,
 }: AuthFormProps<T>) => {
+
+
+  const router = useRouter();
   const schema = authSchemas[type];
   const resolvedDefaults = {
     ...authDefaultValues[type],
@@ -151,7 +156,15 @@ const AuthForm = <T extends AuthType>({
   const handleFormSubmit = async (data: AuthFormValuesMap[T]) => {
     console.log("Form Data:", data);
     
-    await onSubmit(data);
+   const result= await onSubmit(data);
+   if (result.success) {
+    toast(`${type === "SIGN_IN" ? "Signed in" : "Signed up"} successfully!`);
+    router.push("/");
+   }
+    else {
+    toast.error(result.error || "An error occurred. Please try again.");
+    
+    }
   };
 
   return (
