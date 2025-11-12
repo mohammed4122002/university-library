@@ -1,5 +1,6 @@
 const config = {
   env: {
+    resendToken: process.env.RESEND_TOKEN!,
     imagekit: {
       urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!,
       publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
@@ -7,12 +8,13 @@ const config = {
     },
     apiEndpoint:
       process.env.NEXT_PUBLIC_API_ENDPOINT || "http://localhost:3000",
-
     databaseUrl: process.env.DATABASE_URL!,
-    upstash:{
-      redisUrl:process.env.UPSTASH_REDIS_REST_URL!,
-      redisToken:process.env.UPSTASH_REDIS_REST_TOKEN!,
-    }
+    upstash: {
+      redisUrl: process.env.UPSTASH_REDIS_REST_URL!,
+      redisToken: process.env.UPSTASH_REDIS_REST_TOKEN!,
+      qstashUrl: process.env.QSTASH_URL!,
+      qstashToken: process.env.QSTASH_TOKEN!,
+    },
   },
 };
 
