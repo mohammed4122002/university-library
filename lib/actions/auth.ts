@@ -5,6 +5,7 @@ import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 import { hash } from "bcryptjs";
 import { signIn } from "@/auth";
+import { AuthError } from "next-auth";
 import { headers } from "next/headers";
 import rateLimit from "../ratelimit";
 import { redirect } from "next/navigation";
@@ -18,18 +19,22 @@ export const signInWithCredentials = async (
   const { email, password } = params;
 
   try {
-    const result = await signIn("credentials", {
+    await signIn("credentials", {
       email,
       password,
       redirect: false,
     });
 
-    if (result?.error) {
-      return { success: false, error: result.error };
-    }
-
     return { success: true };
   } catch (error) {
+    if (error instanceof AuthError) {
+      if (error.type === "CredentialsSignin") {
+        return { success: false, error: "Invalid email or password" };
+      }
+
+      return { success: false, error: "Unable to sign in. Please try again." };
+    }
+
     console.log(error, "Signin error");
     return { success: false, error: "Signin error" };
   }
