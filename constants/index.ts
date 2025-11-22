@@ -12,7 +12,7 @@ export const navigationLinks = [
   },
 ];
 
-export const adminSideBarLinks = [
+export const adminSidebarLinks = [
   {
     img: "/icons/admin/home.svg",
     route: "/admin",
