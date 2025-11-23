@@ -3,6 +3,9 @@ import Sidebar from "@/components/admin/Sidebar";
 import Header from "@/components/admin/Header";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import { db } from "@/database/drizzle";
+import { users } from "@/database/schema";
+import { eq } from 'drizzle-orm';
 
 export default async function AdminLayout({
   children,
@@ -14,7 +17,14 @@ export default async function AdminLayout({
   if (!session?.user?.name) {
     redirect("/sign-in");
   }
+  const isAdmin = await db
+    .select({ isAdmin: users.role })
+    .from(users)
+    .where(eq(users.id, session.user.id))
+    .limit(1)
+    .then((res) => res[0]?.isAdmin === "ADMIN");
 
+  if (!isAdmin) redirect("/");
   return (
     <main className="flex min-h-screen w-full flex-row">
       <Sidebar session={session} />

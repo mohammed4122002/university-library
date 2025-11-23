@@ -21,7 +21,7 @@ import FileUpload from "@/components/FileUpload";
 import ColorPicker from "@/components/admin/ColorPicker";
 // import { createBook } from "@/lib/admin/actions/book";
 import { toast } from "@/hooks/use-toast";
-import { log } from "console";
+import { createBook } from "@/lib/actions/book";
 
 interface Props extends Partial<Book> {
   type?: "create" | "update";
@@ -47,14 +47,10 @@ const BookForm = ({ type, ...book }: Props) => {
   });
 
   const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-    // const result = await createBook(values);
-    
+    const result = await createBook(values);
+console.log(result);
 
 
-
-    console.log(values);
-    
-    const result = { success: true, data: { id: 1 }, message: "cgbfd" }; // Mocked result for demonstration
     if (result.success) {
       toast({
         title: "Success",
@@ -147,8 +143,8 @@ const BookForm = ({ type, ...book }: Props) => {
               <FormControl>
                 <Input
                   type="number"
-                 min={1}
-                 max={5}
+                  min={1}
+                  max={5}
                   placeholder="Book rating"
                   {...field}
                   className="book-form_input"
@@ -192,7 +188,7 @@ const BookForm = ({ type, ...book }: Props) => {
               </FormLabel>
               <FormControl>
                 <FileUpload
-                 type="image"
+                  type="image"
                   accept="image/*"
                   placeholder="Upload a book cover"
                   folder="books/covers"
@@ -255,7 +251,7 @@ const BookForm = ({ type, ...book }: Props) => {
               </FormLabel>
               <FormControl>
                 <FileUpload
-                type="video"
+                  type="video"
                   accept="video/*"
                   placeholder="Upload a book trailer"
                   folder="books/videos"
