@@ -1,7 +1,10 @@
-import { cn } from "@/lib/utils";
+"use client";
+
 import React from "react";
+import { cn } from "@/lib/utils";
+import BookCoverSvg from "@/components/BookCoverSvg";
 import Image from "next/image";
-import BookCoverSvg from "./BookCoverSvg";
+
 type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide";
 
 const variantStyles: Record<BookCoverVariant, string> = {
@@ -28,26 +31,27 @@ const BookCover = ({
   return (
     <div
       className={cn(
-        "relative overflow-hidden transition-all duration-300",
+        "relative transition-all duration-300",
         variantStyles[variant],
-        className
+        className,
       )}
     >
       <BookCoverSvg coverColor={coverColor} />
+
       <div
-        className="absolute inset-y-[6%] left-[12%] z-10"
-        style={{ width: "87.5%" }}
+        className="absolute z-10"
+        style={{ left: "12%", width: "87.5%", height: "88%" }}
       >
         <Image
           src={coverImage}
-          alt="book cover"
+          alt="Book cover"
           fill
-          className="rounded-sm object-cover"
-          sizes="(max-width: 640px) 220px, (max-width: 1024px) 260px, 320px"
+          className="rounded-sm object-fill"
+          loading="lazy"
+          sizes="(max-width: 640px) 240px, (max-width: 1024px) 320px, 360px"
         />
       </div>
     </div>
   );
 };
- 
 export default BookCover;
