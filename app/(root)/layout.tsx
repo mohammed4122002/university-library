@@ -10,7 +10,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
    const session = await auth();
 console.log("session" , session);
 
-  if (!session) redirect("/sing-in");
+  if (!session) redirect("/sign-in");
   return (
     <main className="root-container">
       <div className="mx-auto max-w-7xl">

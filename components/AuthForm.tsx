@@ -21,6 +21,7 @@ import Link from "next/link";
 import ImageUpload from "./FileUpload";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import FileUpload from "./FileUpload";
 
 const authSchemas = {
   SIGN_IN: singInSchema,
@@ -191,7 +192,7 @@ const AuthForm = <T extends AuthType>({
                   </FormLabel>
                   <FormControl>
                     {field.name === "universityCard" ? (
-                    <ImageUpload  onFileChange={field.onChange}/>
+                    <FileUpload type="image" placeholder="Upload your ID" folder="ids"  onFileChange={field.onChange} variant="dark"/>
                     ) : (
                       <Input
                         type={fieldConfig.type ?? "text"}
