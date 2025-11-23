@@ -7,10 +7,14 @@ import type { NextRequest } from "next/server";
 export async function proxy(request: NextRequest) {
   const session = await auth();
 
-//   // 🔐 مثال: احمِ جميع مسارات /dashboard من الوصول بدون تسجيل
-//   if (!session && request.nextUrl.pathname.startsWith("/dashboard")) {
-//     return NextResponse.redirect(new URL("/sign-in", request.url));
-//   }
+  const protectedPaths = ["/dashboard", "/profile", "/admin"];
+  const isProtectedPath = protectedPaths.some((path) =>
+    request.nextUrl.pathname.startsWith(path)
+  );
+
+  if (!session && isProtectedPath) {
+    return NextResponse.redirect(new URL("/sign-in", request.url));
+  }
 
   // السماح بالمرور لأي مسار آخر
   return NextResponse.next();

@@ -1,5 +1,3 @@
-import { auth } from "@/auth";
-import { desc } from "drizzle-orm";
 import { z } from "zod";
 
 export const singUpSchema = z.object({

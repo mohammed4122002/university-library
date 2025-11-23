@@ -29,7 +29,7 @@ const Page = () => {
           Whoa, Slow Down There, Speedy!
         </h1>
         <p className="text-lg text-light-300 md:text-xl">
-          Looks like you've been a little too eager. We've put a temporary pause
+          Looks like you’ve been a little too eager. We’ve put a temporary pause
           on your excitement. 🚦 Chill for a bit, sip something nice, and try
           again shortly.
         </p>

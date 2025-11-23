@@ -101,8 +101,9 @@ export default function FileUpload({
     input.type = "file";
     input.accept = accept;
 
-    input.onchange = async (e: any) => {
-      const file = e.target.files?.[0];
+    input.onchange = async (event: Event) => {
+      const target = event.target as HTMLInputElement | null;
+      const file = target?.files?.[0];
       if (!file) return;
 
       // Validate before upload
@@ -154,7 +155,7 @@ export default function FileUpload({
   /* ====================================
      🟢 Handle Upload Errors
      ==================================== */
-  const handleUploadError = (err: any) => {
+  const handleUploadError = (err: unknown) => {
     if (err instanceof ImageKitAbortError) {
       toast.info("Upload canceled");
     } else if (err instanceof ImageKitUploadNetworkError) {
@@ -165,7 +166,7 @@ export default function FileUpload({
       toast.error("Server error from ImageKit");
     } else {
       toast.error("Upload failed", {
-        description: err?.message,
+        description: err instanceof Error ? err.message : "Unknown error",
       });
     }
   };

@@ -18,7 +18,6 @@ import {
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import Link from "next/link";
-import ImageUpload from "./FileUpload";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import FileUpload from "./FileUpload";
@@ -227,7 +226,7 @@ const AuthForm = <T extends AuthType>({
         <Link href={"/sing-up"}>
           {" "}
           <p className="text-sm text-center text-light-300">
-            Don't have an account?{" "}
+            Don’t have an account?{" "}
             <span className="text-primary font-semibold">Sign Up</span>
           </p>
         </Link>
