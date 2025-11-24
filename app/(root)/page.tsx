@@ -21,7 +21,7 @@ export default async function HomePage() {
 
       <BookList
         title="Latest Books"
-        books={sampleBooks}
+        books={latestBooks}
         containerClassName="mt-28"
       />
     </>

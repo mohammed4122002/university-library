@@ -20,7 +20,6 @@ const BookOverview = async ({
   description,
   coverColor,
   coverUrl,
-  id,
   userId,
 }: Props) => {
   const [user] = await db
